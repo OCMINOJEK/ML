@@ -125,9 +125,7 @@ def parsing_page(url: str):
 
 
 data = []
-# parsing_page(url_rating)
-# for i in range(2,11):
-#     parsing_page(url_ratings_page_n + str(i))
-# save_to_tsv(data)
-
-parsing_page(url_ratings_page_n + str(6))
+parsing_page(url_rating)
+for i in range(2,11):
+    parsing_page(url_ratings_page_n + str(i))
+save_to_tsv(data)
