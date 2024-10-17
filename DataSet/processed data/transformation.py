@@ -1,5 +1,15 @@
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+def one_hot_encoding(list_all: list[str], list_data: list[str]) -> list[str]:
+    list_ans = ['0'] * len(list_all)
+    for i in list_data:
+        list_ans[list_all.index(i)] = '1'
+    return list_ans
+
+
 with open(file='../players_data.tsv', mode='r', encoding='utf8') as file_r:
-    print(file_r.readline()) # skip first line
+    file_r.readline() # skip first line
 
     lines = []
     f = open("list_champions.txt", mode='r', encoding='utf8')
@@ -10,68 +20,73 @@ with open(file='../players_data.tsv', mode='r', encoding='utf8') as file_r:
     list_ranks = f.readline().split(',')
     f.close()
 
-    max_games_played = float('-inf')
-    min_games_played = float('inf')
+    file_data = file_r.readlines()
 
-    max_level = float('-inf')
-    min_level = float('inf')
+dict_data = {"game_played": [], "win_rate": [], "level": [], "kills": [], "deaths": [], "assists": []}
 
-    max_KDA = [float('-inf') for i in range(3)]
-    min_KDA = [float('inf') for i in range(3)]
+for line in file_data:
+    if "?" in line:
+        continue
+    line = line.strip().split('\t')
 
-    for line in file_r:
-        if "?" in line:
-            continue
-        line = line.strip().split('\t')
-        favorite_champions = line[11].strip().split(', ')
-        line.pop(11)  # delete favorite champions
-        for _ in range(len(list_champions)):
-            line.append(str(0))
-        for i in favorite_champions:
-            line[list_champions.index(i) + 11] = str(1)
+    dict_data["game_played"].append(float(line[2]))
+    dict_data["win_rate"].append(float(line[3]))
+    dict_data["level"].append(float(line[5]))
+    dict_data["kills"].append(float(line[7]))
+    dict_data["deaths"].append(float(line[8]))
+    dict_data["assists"].append(float(line[9]))
 
-        line[4] = str(list_ranks.index(line[4]) + 1) # label encoding player ranks 1,2,3...
-
-        line[6] = str(list_ranks.index(line[6]) + 1) # label encoding enemy ranks 1,2,3...
-
-        max_games_played = max(max_games_played, int(line[2]))
-        min_games_played = min(min_games_played, int(line[2]))
-
-        max_level = max(max_level, int(line[5]))
-        min_level = min(min_level, int(line[5]))
-
-        print(max_level, min_level)
-
-        for i in range(3):
-            max_KDA[i] = max(max_KDA[i], float(line[7 + i]))
-            min_KDA[i] = min(min_KDA[i], float(line[7 + i]))
-        lines.append(line)
-
-    for i in range(len(lines)):
+df = pd.DataFrame(dict_data)
+scaler = StandardScaler()
+df_normalized = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
 
 
-        lines[i][2] = str(round(((float(lines[i][2]) - min_games_played)/(max_games_played - min_games_played)), 3)) # normalization games_played
-        lines[i][3] = str(round((float(lines[i][3])/100), 3)) # normalization win_rate
+index = -1
+new_data = []
+for line in file_data:
+    if "?" in line:
+        continue
+    index += 1
+    line = line.strip().split('\t')
 
-        lines[i][5] = str(round(((float(lines[i][5]) - min_level) / (max_level - min_level)), 3))
+    line[2] = str(df_normalized["game_played"][index])
+    line[3] = str(df_normalized["win_rate"][index])
+    line[5] = str(df_normalized["level"][index])
+    line[7] = str(df_normalized["kills"][index])
+    line[8] = str(df_normalized["deaths"][index])
+    line[9] = str(df_normalized["assists"][index])
 
-        lines[i][7] = str(round(((float(lines[i][7]) - min_KDA[0]) / (max_KDA[0] - min_KDA[0])),3))  # normalization Kills
-        lines[i][8] = str(round(((float(lines[i][8]) - min_KDA[1]) / (max_KDA[1] - min_KDA[1])),3))  # normalization Deaths
-        lines[i][9] = str(round(((float(lines[i][9]) - min_KDA[2]) / (max_KDA[2] - min_KDA[2])),3))  # normalization Assists
 
-        lines[i].pop(0)  # delete number player
-        lines[i].pop(0)  # delete nickname
+    imut_1 = line[0:4]
+    rank = line[4]
+    imut_2 = line[5:6]
+    enemy = line[6]
+    imut_3 = line[7:11]
+    favorite_champions = line[11].strip().split(', ')
+
+
+    line = imut_1 + one_hot_encoding(list_ranks, [rank]) + imut_2 \
+        + one_hot_encoding(list_ranks, [enemy]) + imut_3 + one_hot_encoding(list_champions, favorite_champions)
+
+    line.pop(0)
+    line.pop(0)
+
+    new_data.append(line)
 
 
 with open(file='processed_data.csv', mode='w', encoding='utf8') as file:
     f = open("list_champions_en.txt", mode='r', encoding='utf8')
     list_champions_en = f.readline().split(',')
     f.close()
-    header = "Games Played,Win Rate %,Rank,Level,Average Enemy Rating,Kills,Deaths,Assists,Favorite Role,"
-    for i in range(len(list_champions_en)):
-        list_champions_en[i] = "is favorite " + str(list_champions_en[i])
-    header_favorite_champions = ','.join(list_champions_en)
-    header += header_favorite_champions
-    file.writelines(header+'\n ')
-    file.writelines('\n'.join([','.join(line) for line in lines]))
+    f =  open("list_ranks_en.txt", mode='r', encoding='utf8')
+    list_ranks_en = f.readline().split(',')
+    f.close()
+    header = "Games Played,Win Rate %, " + \
+             ','.join(["is " + rank for rank in list_ranks_en]) + ",Level," + \
+             ','.join(["is Enemy " + rank for rank in list_ranks_en]) + \
+             ",Kills,Deaths,Assists,Favorite Role," + \
+             ','.join(["is " + champion for champion in list_champions_en])
+
+    file.writelines(header+'\n')
+    file.writelines('\n'.join([','.join(line) for line in new_data]))
 
