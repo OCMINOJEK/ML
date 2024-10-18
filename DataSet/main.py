@@ -66,7 +66,7 @@ def save_to_tsv(data_to_save, filename="players_data.tsv"):
         # Запись заголовков (если файл пустой)
         if file.tell() == 0:
             writer.writerow([
-                "Rating", "Name", "Games Played", "Win Rate, %", "Rank", "Level",
+                "Rating", "Name", "Games Played", "Win Rate %", "Rank", "Level",
                 "Average Enemy Rating", "Kills", "Deaths", "Assists", "Favorite Role", "Favorite Champions"
             ])
         # Запись данных

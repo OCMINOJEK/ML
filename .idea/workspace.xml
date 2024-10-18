@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae73f646-6b37-42a5-8261-3605129d7a38" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ML.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ML.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSet/processed data/processed_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/processed data/processed_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSet/processed data/transformation.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/processed data/transformation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSet/players_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/players_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSet/processed data/list_champions_en.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/processed data/list_champions_en.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSet/tsv_to_csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/tsv_to_csv.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,24 +34,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.ListChampions.executor": "Run",
-    "Python.check.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.transformation.executor": "Run",
-    "Python.tsv_to_csv.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/MyData/ITMO/ML/1-dataset-OCMINOJEK",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.ListChampions.executor&quot;: &quot;Run&quot;,
+    &quot;Python.check.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.transformation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tsv_to_csv.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/MyData/ITMO/ML/1-dataset-OCMINOJEK&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\petro\PycharmProjects\DataSetML\DataSet\processed data" />
@@ -122,7 +121,8 @@
       <workItem from="1729078577183" duration="1042000" />
       <workItem from="1729095511871" duration="47000" />
       <workItem from="1729172817278" duration="69000" />
-      <workItem from="1729193181786" duration="7482000" />
+      <workItem from="1729193181786" duration="7585000" />
+      <workItem from="1729248727725" duration="4118000" />
     </task>
     <servers />
   </component>
@@ -152,8 +152,10 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DataSetML$check.coverage" NAME="check Coverage Results" MODIFIED="1729077873889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
+    <SUITE FILE_PATH="coverage/ML$ListChampions.coverage" NAME="ListChampions Coverage Results" MODIFIED="1729250768957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
     <SUITE FILE_PATH="coverage/DataSetML$tsv_to_csv.coverage" NAME="tsv_to_csv Coverage Results" MODIFIED="1729025126020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
     <SUITE FILE_PATH="coverage/DataSetML$transformation.coverage" NAME="transformation Coverage Results" MODIFIED="1729078216289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
+    <SUITE FILE_PATH="coverage/ML$tsv_to_csv.coverage" NAME="tsv_to_csv Coverage Results" MODIFIED="1729253040363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
     <SUITE FILE_PATH="coverage/DataSetML$main.coverage" NAME="main Coverage Results" MODIFIED="1729005300257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
     <SUITE FILE_PATH="coverage/ML$transformation.coverage" NAME="transformation Coverage Results" MODIFIED="1729200875315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
     <SUITE FILE_PATH="coverage/DataSetML$ListChampions.coverage" NAME="ListChampions Coverage Results" MODIFIED="1729001131142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
