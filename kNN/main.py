@@ -27,7 +27,7 @@ class KNearestNeighbors:
         :param b: {p_int}
         """
 
-
+        self.y_train_data = None
         self.neigh = None
         self.y_train = None
         self.X_train = None
@@ -45,28 +45,41 @@ class KNearestNeighbors:
 
     def fit(self, X, y):
         self.X_train_data = X
+        self.y_train_data = y
         self.X_train = np.array(X)
         self.y_train = np.array(y)
         self.neigh = NearestNeighbors(n_neighbors = len(X), metric=self._compute_distance)
         self.neigh.fit(self.X_train)
 
     def lowess(self):
-        i = 0
         for index, row in self.X_train_data.iterrows():
-            X = self.X_train_data.drop(index)
-            neigh = NearestNeighbors(n_neighbors=len(X))
+            x_i = row.to_numpy()
+            X = np.array(self.X_train_data.drop(index))
+            neigh = NearestNeighbors(n_neighbors=len(X), metric=self._compute_distance)
             neigh.fit(X)
-            X = np.array(X)
-            distances, indices = neigh.kneighbors([X[i]], return_distance=True)
-            i += 1
-            return 1
+            if self.window_type == 'variable':
+                distances, indices = neigh.kneighbors([x_i], n_neighbors=self.k + 1, return_distance=True)
+            elif self.window_type == 'fixed':
+                distances, indices = neigh.radius_neighbors([x_i], radius=self.h, return_distance=True)
+            else:
+                raise Exception('Invalid window type')
+            distances = distances[0]
+            indices = indices[0]
+            class_count = {}
+            for i in range(len(distances)):
+                label = self.y_train[indices[i]]
+                if label in class_count:
+                    class_count[label] += 1
+                else:
+                    class_count[label] = 1
+            self.X_train_data.loc[index, "weights"] = self._kernel(1 - (class_count[self.y_train_data.loc[index]] / len(distances)))
+        self.X_train = np.array(self.X_train_data)
+        self.neigh.fit(self.X_train)
 
     def predict(self, X):
         X = np.array(X)
         predicted_classes = []
         for i in range(len(X)):
-            # if i % 100 == 0:
-            #     print(i)
             predicted_classes.append(self._predict_single(X[i]))
         return predicted_classes
 
@@ -131,12 +144,11 @@ class KNearestNeighbors:
 
 
 
-# Загрузка и подготовка данных
 data = pd.read_csv("processed_data.csv")
 
-# # Добавляем столбец с априорными весами
-# data['weights'] = 1.0  # Устанавливаем начальные веса для всех объектов равными 1.0
-
+# Добавляем столбец с априорными весами
+data['weights'] = 1.0  # Устанавливаем начальные веса для всех объектов равными 1.0
+# data.loc[100:300, 'weights'] = 0.5 #пример
 y = data['Rank']
 X = data.drop(columns=['Rank'])
 X = X.drop(X.columns[43:-1], axis=1)  # Удаляем favorite champions
@@ -182,64 +194,60 @@ def random_param():
 
 
 
-knn = KNearestNeighbors(k = 41, metric_p=37, metric='minkowski', kernel='triangular', window_type='variable')
+knn = KNearestNeighbors(k = 41, metric_p=37, metric='minkowski', kernel='epanechnikov', window_type='variable')
 knn.fit(X_train, y_train)
-# knn.lowess()
+y_pred = knn.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+knn.lowess()
 y_pred = knn.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
 
-fixed_params_for_k = {
-    'metric': 'minkowski',
-    'metric_p': 37,
-    'kernel': 'triangular',
-    'window_type': 'variable',
-    'h': 100,
-    'a': 1,
-    'b': 1
-}
 
-fixed_params_for_h = {
-    'metric': 'minkowski',
-    'metric_p': 37,
-    'kernel': 'triangular',
-    'window_type': 'fixed',
-    'k': 41,
-    'a': 1,
-    'b': 1
-}
 
-train_accuracies_k, test_accuracies_k = [], []
-train_accuracies_h, test_accuracies_h = [], []
 
-k_values = range(10, 220, 10)
-
-for k in k_values:
-    knn = KNearestNeighbors(k=k, **fixed_params_for_k)
-    knn.fit(X_train, y_train)
-
-    y_train_pred = knn.predict(X_train)
-    train_accuracy_k = accuracy_score(y_train, y_train_pred)
-    train_accuracies_k.append(train_accuracy_k)
-
-    y_test_pred = knn.predict(X_test)
-    test_accuracy_k = accuracy_score(y_test, y_test_pred)
-    test_accuracies_k.append(test_accuracy_k)
-    print(train_accuracy_k, test_accuracy_k)
-print("aboba")
-
-# Построение графика
-plt.figure(figsize=(12, 8))
-# Линии для k
-plt.plot(k_values, train_accuracies_k, label='Train Accuracy (varying k)', color='blue', linestyle='--', marker='o')
-plt.plot(k_values, test_accuracies_k, label='Test Accuracy (varying k)', color='blue', linestyle='-', marker='o')
-
-# Оформление графика
-plt.xlabel('Parameter Value k')
-plt.ylabel('Accuracy')
-plt.title('Accuracy k')
-plt.legend()
-plt.grid(True)
-plt.show()
+# fixed_params_for_k = {
+#     'metric': 'minkowski',
+#     'metric_p': 37,
+#     'kernel': 'triangular',
+#     'window_type': 'variable',
+#     'h': 100,
+#     'a': 1,
+#     'b': 1
+# }
+#
+# train_accuracies_k, test_accuracies_k = [], []
+# train_accuracies_h, test_accuracies_h = [], []
+#
+# k_values = range(10, 220, 10)
+#
+# for k in k_values:
+#     knn = KNearestNeighbors(k=k, **fixed_params_for_k)
+#     knn.fit(X_train, y_train)
+#
+#     y_train_pred = knn.predict(X_train)
+#     train_accuracy_k = accuracy_score(y_train, y_train_pred)
+#     train_accuracies_k.append(train_accuracy_k)
+#
+#     y_test_pred = knn.predict(X_test)
+#     test_accuracy_k = accuracy_score(y_test, y_test_pred)
+#     test_accuracies_k.append(test_accuracy_k)
+#     print(train_accuracy_k, test_accuracy_k)
+# print("aboba")
+#
+# # Построение графика
+# plt.figure(figsize=(12, 8))
+# # Линии для k
+# plt.plot(k_values, train_accuracies_k, label='Train Accuracy (varying k)', color='blue', linestyle='--', marker='o')
+# plt.plot(k_values, test_accuracies_k, label='Test Accuracy (varying k)', color='blue', linestyle='-', marker='o')
+#
+# # Оформление графика
+# plt.xlabel('Parameter Value k')
+# plt.ylabel('Accuracy')
+# plt.title('Accuracy k')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
 
 

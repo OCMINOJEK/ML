@@ -57,16 +57,18 @@ for line in file_data:
     line[9] = str(df_normalized["assists"][index])
 
 
-    imut_1 = line[0:4]
+    imut_1 = line[0:5]
     rank = line[4]
     imut_2 = line[5:6]
     enemy = line[6]
-    imut_3 = line[7:11]
+    imut_3 = line[7:10]
+    role = line[10]
     favorite_champions = line[11].strip().split(', ')
 
 
-    line = imut_1 + one_hot_encoding(list_ranks, [rank]) + imut_2 \
-        + one_hot_encoding(list_ranks, [enemy]) + imut_3 + one_hot_encoding(list_champions, favorite_champions)
+    line = imut_1 + imut_2 \
+        + one_hot_encoding(list_ranks, [enemy]) + imut_3 + one_hot_encoding(["Топ", "Мид","Лес","Бот","Поддержка"], [role])\
+           + one_hot_encoding(list_champions, favorite_champions)
 
     line.pop(0)
     line.pop(0)
@@ -81,12 +83,12 @@ with open(file='processed_data.csv', mode='w', encoding='utf8') as file:
     f =  open("list_ranks_en.txt", mode='r', encoding='utf8')
     list_ranks_en = f.readline().split(',')
     f.close()
-    header = "Games Played,Win Rate %, " + \
-             ','.join(["is " + rank for rank in list_ranks_en]) + ",Level," + \
+    header = "Games Played,Win Rate %,Rank,Level," + \
              ','.join(["is Enemy " + rank for rank in list_ranks_en]) + \
-             ",Kills,Deaths,Assists,Favorite Role," + \
+             ",Kills,Deaths,Assists," + \
+             "is Top,is Mid,is Jungle,is Bot,is Support," + \
              ','.join(["is " + champion for champion in list_champions_en])
-
+    print(len(header.split(',')), len(new_data[1]), header.split(',')[3], new_data[1][3])
     file.writelines(header+'\n')
     file.writelines('\n'.join([','.join(line) for line in new_data]))
 
