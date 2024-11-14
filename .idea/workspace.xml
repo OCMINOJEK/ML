@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ae73f646-6b37-42a5-8261-3605129d7a38" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSet/check.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/check.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSet/players_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/players_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSet/processed data/list_champions_en.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/processed data/list_champions_en.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSet/processed data/processed_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/processed data/processed_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSet/processed data/transformation.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/processed data/transformation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSet/tsv_to_csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataSet/tsv_to_csv.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kNN/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/kNN/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Linear/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linear/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,29 +38,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Doctests in _base.executor": "Debug",
-    "Python.ListChampions.executor": "Debug",
-    "Python.check.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.pisa.executor": "Run",
-    "Python.s.executor": "Run",
-    "Python.siudfh.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.transformation.executor": "Run",
-    "Python.tsv_to_csv.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/petro/PycharmProjects/ML/Linear",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Doctests in _base.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ListChampions.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.check.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pisa.executor&quot;: &quot;Run&quot;,
+    &quot;Python.s.executor&quot;: &quot;Run&quot;,
+    &quot;Python.siudfh.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.transformation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tsv_to_csv.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/petro/PycharmProjects/ML/Linear&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\petro\PycharmProjects\ML\Linear" />
@@ -76,11 +70,37 @@
       <recent name="C:\Users\petro\PycharmProjects\DataSetML\DataSet\processed data" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="ML" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (modeling)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Linear" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Linear/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-PY-242.21829.153" />
-        <option value="bundled-python-sdk-464836ebc622-b74155a9e76b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.21829.153" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17011.127" />
+        <option value="bundled-python-sdk-48aec45f0201-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17011.127" />
       </set>
     </attachedChunks>
   </component>
@@ -142,20 +162,20 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/DataSetML$check.coverage" NAME="check Coverage Results" MODIFIED="1729077873889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
-    <SUITE FILE_PATH="coverage/DataSetML$main.coverage" NAME="main Coverage Results" MODIFIED="1729005300257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
-    <SUITE FILE_PATH="coverage/ML$Doctests_in__base.coverage" NAME="Doctests in _base Coverage Results" MODIFIED="1730353293630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../../MyData/ITMO/Python/OCMINOJEK/.venv/Lib/site-packages/sklearn/neighbors" />
     <SUITE FILE_PATH="coverage/ML$siudfh.coverage" NAME="siudfh Coverage Results" MODIFIED="1731417465246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Linear" />
+    <SUITE FILE_PATH="coverage/ML$tsv_to_csv.coverage" NAME="tsv_to_csv Coverage Results" MODIFIED="1730199920859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
+    <SUITE FILE_PATH="coverage/ML$pisa.coverage" NAME="pisa Coverage Results" MODIFIED="1730125768948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kNN" />
+    <SUITE FILE_PATH="coverage/DataSetML$main.coverage" NAME="main Coverage Results" MODIFIED="1729005300257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
+    <SUITE FILE_PATH="coverage/ML$s.coverage" NAME="s Coverage Results" MODIFIED="1730201182498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kNN" />
+    <SUITE FILE_PATH="coverage/DataSetML$ListChampions.coverage" NAME="ListChampions Coverage Results" MODIFIED="1729001131142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
+    <SUITE FILE_PATH="coverage/ML$check.coverage" NAME="check Coverage Results" MODIFIED="1731415701102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
+    <SUITE FILE_PATH="coverage/ML$Doctests_in__base.coverage" NAME="Doctests in _base Coverage Results" MODIFIED="1730353293630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../../MyData/ITMO/Python/OCMINOJEK/.venv/Lib/site-packages/sklearn/neighbors" />
+    <SUITE FILE_PATH="coverage/ML$test.coverage" NAME="test Coverage Results" MODIFIED="1731485624759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Linear" />
+    <SUITE FILE_PATH="coverage/ML$main.coverage" NAME="main Coverage Results" MODIFIED="1731587318231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Linear" />
+    <SUITE FILE_PATH="coverage/DataSetML$check.coverage" NAME="check Coverage Results" MODIFIED="1729077873889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
+    <SUITE FILE_PATH="coverage/DataSetML$transformation.coverage" NAME="transformation Coverage Results" MODIFIED="1729078216289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
+    <SUITE FILE_PATH="coverage/ML$transformation.coverage" NAME="transformation Coverage Results" MODIFIED="1730203974160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
     <SUITE FILE_PATH="coverage/ML$ListChampions.coverage" NAME="ListChampions Coverage Results" MODIFIED="1730445607516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
     <SUITE FILE_PATH="coverage/DataSetML$tsv_to_csv.coverage" NAME="tsv_to_csv Coverage Results" MODIFIED="1729025126020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
-    <SUITE FILE_PATH="coverage/DataSetML$transformation.coverage" NAME="transformation Coverage Results" MODIFIED="1729078216289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
-    <SUITE FILE_PATH="coverage/ML$pisa.coverage" NAME="pisa Coverage Results" MODIFIED="1730125768948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kNN" />
-    <SUITE FILE_PATH="coverage/ML$tsv_to_csv.coverage" NAME="tsv_to_csv Coverage Results" MODIFIED="1730199920859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
-    <SUITE FILE_PATH="coverage/ML$s.coverage" NAME="s Coverage Results" MODIFIED="1730201182498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kNN" />
-    <SUITE FILE_PATH="coverage/ML$test.coverage" NAME="test Coverage Results" MODIFIED="1731485624759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Linear" />
-    <SUITE FILE_PATH="coverage/ML$transformation.coverage" NAME="transformation Coverage Results" MODIFIED="1730203974160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
-    <SUITE FILE_PATH="coverage/DataSetML$ListChampions.coverage" NAME="ListChampions Coverage Results" MODIFIED="1729001131142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
-    <SUITE FILE_PATH="coverage/ML$main.coverage" NAME="main Coverage Results" MODIFIED="1731521236698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Linear" />
-    <SUITE FILE_PATH="coverage/ML$check.coverage" NAME="check Coverage Results" MODIFIED="1731415701102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
   </component>
 </project>
