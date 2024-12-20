@@ -139,107 +139,70 @@ X = X.drop(X.columns[37:-1], axis=1)  # Удаляем favorite roles
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.7, random_state=42)
 
-def plot_learning_curve(classifier, X, y):
+def plot_learning_curve(classifier1, classifier2, X, y):
 
     train_sizes = np.linspace(0.1, 0.9, 9)
-    train_scores = []
+    train1_scores = []
+    train2_scores = []
     val_scores = []
 
     for train_size in train_sizes:
         X_train, X_val, y_train, y_val = train_test_split(X, y, train_size=train_size, random_state=42)
 
-        classifier.fit(X_train.values, y_train.values)
-        train_score = accuracy_score(y_train, classifier.predict(X_train.values))
-        val_score = accuracy_score(y_val, classifier.predict(X_val.values))
-
-        train_scores.append(train_score)
-        val_scores.append(val_score)
+        classifier1.fit(X_train.values, y_train.values)
+        classifier2.fit(X_train.values, y_train.values)
+        train1_score = accuracy_score(y_train, classifier1.predict(X_train.values))
+        train2_score = accuracy_score(y_train, classifier2.predict(X_train.values))
+        train1_scores.append(train1_score)
+        train2_scores.append(train2_score)
 
     plt.figure(figsize=(8, 6))
-    plt.plot(train_sizes, train_scores, label='Training Accuracy')
-    plt.plot(train_sizes, val_scores, label='Validation Accuracy')
+    plt.plot(train_sizes, train1_scores, label='Training Accuracy (classifierGrad)')
+    plt.plot(train_sizes, train2_scores, label='Training Accuracy (classifierSVM)')
     plt.xlabel('Training Set Size')
     plt.ylabel('Accuracy')
     plt.title('Learning Curve')
     plt.legend()
     plt.show()
 
-def plot_test_error_curve(classifier, X, y, n_splits=5):
-    train_sizes = np.linspace(0.1, 0.9, 10)  # Изменили диапазон, чтобы исключить 1.0
-    mean_errors = []
-    ci_lower = []
-    ci_upper = []
-
-    for size in train_sizes:
-        test_errors = []
-
-        for i in range(n_splits):
-            # Проверяем, чтобы размер тестового множества был больше 0
-            if size >= 1.0:
-                continue
-
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1 - size, random_state=None)
-
-            classifier.fit(X_train.values, y_train.values)
-            y_pred_test = classifier.predict(X_test.values)
-            error = 1 - accuracy_score(y_test, y_pred_test)
-            test_errors.append(error)
-            print(size, i)
-        mean_errors.append(np.mean(test_errors))
-        ci_lower.append(np.percentile(test_errors, 2.5))
-        ci_upper.append(np.percentile(test_errors, 97.5))
-
-    plt.plot(train_sizes, mean_errors, label='Test Error', color='red')
-    plt.fill_between(train_sizes, ci_lower, ci_upper, color='red', alpha=0.2, label='95% Confidence Interval')
-
-    plt.xlabel("Training Set Size")
-    plt.ylabel("Test Error")
-    plt.title("Test Error Curve with Confidence Interval")
-    plt.legend()
-    plt.show()
-
-def plot_test_error_curve_with_baseline(classifier, X, y, n_splits=5):
+def plot_test_error_curve(classifier1, classifier2, classifier3, X, y, n_splits=5):
     train_sizes = np.linspace(0.1, 0.9, 10)
-    mean_errors = []
-    ci_lower = []
-    ci_upper = []
+    classifieres = [classifier1, classifier2, classifier3]
+    colors = ["red", "blue", "green"]
+    names = ['classifierGrad', 'classifierSVM', 'classifierMatrix']
+    for classifier, color, name in zip(classifieres,colors,names):
+        mean_errors = []
+        ci_lower = []
+        ci_upper = []
+        for size in train_sizes:
+            test_errors = []
 
-    # Вычисление ошибки для различных размеров обучающего набора
-    for size in train_sizes:
-        test_errors = []
+            for i in range(n_splits):
+                if size >= 1.0:
+                    continue
 
-        for _ in range(n_splits):
-            if size >= 1.0:
-                continue
+                X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1 - size, random_state=None)
 
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1 - size, random_state=None)
+                classifier.fit(X_train.values, y_train.values)
+                y_pred_test = classifier.predict(X_test.values)
+                error = 1 - accuracy_score(y_test, y_pred_test)
+                test_errors.append(error)
+                print(size, i)
+            mean_errors.append(np.mean(test_errors))
+            ci_lower.append(np.percentile(test_errors, 2.5))
+            ci_upper.append(np.percentile(test_errors, 97.5))
 
-            # Обучаем и тестируем классификатор (например, SVM)
-            classifier.fit(X_train, y_train)
-            y_pred_test = classifier.predict(X_test)
-            error = 1 - accuracy_score(y_test, y_pred_test)
-            test_errors.append(error)
+        plt.plot(train_sizes, mean_errors, label=f'Test Error {name}', color=color)
+        plt.fill_between(train_sizes, ci_lower, ci_upper, color=color, alpha=0.2)
 
-        mean_errors.append(np.mean(test_errors))
-        ci_lower.append(np.percentile(test_errors, 2.5))
-        ci_upper.append(np.percentile(test_errors, 97.5))
-
-    # Оцениваем ошибку на тестовом множестве для базового классификатора
+        plt.xlabel("Training Set Size")
+        plt.ylabel("Test Error")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    classifier.fit(X_train, y_train)
-    baseline_y_pred = classifier.predict(X_test)
+    classifier3.fit(X_train, y_train)
+    baseline_y_pred = classifier3.predict(X_test)
     baseline_error = 1 - accuracy_score(y_test, baseline_y_pred)
-
-    # Построение графика
-    plt.plot(train_sizes, mean_errors, label='Test Error (SVM)', color='red')
-    plt.fill_between(train_sizes, ci_lower, ci_upper, color='red', alpha=0.2, label='95% Confidence Interval')
-
-    # Добавляем горизонтальную линию для ошибки базового классификатора
-    plt.axhline(y=baseline_error, color='blue', linestyle='--', label='Baseline Error (Linear Regression)')
-
-    plt.xlabel("Training Set Size")
-    plt.ylabel("Test Error")
-    plt.title("Test Error Curve with Baseline")
+    plt.axhline(y=baseline_error, color='green', linestyle='--', label='Baseline Error (Linear Regression)')
+    plt.title("Test Error Curve with Confidence Interval")
     plt.legend()
     plt.show()
 
@@ -276,7 +239,6 @@ def random_search_svm(X_train, y_train, n_iter=50):
     print(f"Лучшая точность на обучении: {best_accuracy:.2f}")
     return best_params
 
-
 def random_search_gradient(X_train, y_train, n_iter=50):
     # Диапазоны гиперпараметров для случайного перебора
     learning_rate_range = [0.0001, 0.001, 0.01, 0.1]
@@ -308,9 +270,9 @@ def random_search_gradient(X_train, y_train, n_iter=50):
     return best_params
 
 # Лучшие гиперпараметры SVM: C=0.1, degree=4, kernel=rbf, gamma=1
-best_svm_params = random_search_svm(X_train, y_train, n_iter=100)
+# best_svm_params = random_search_svm(X_train, y_train, n_iter=100)
 # Лучшие гиперпараметры Gradient Classifier: learning_rate=0.1, alpha=0.1, lambda_=0
-best_gradient_params = random_search_gradient(X_train, y_train, n_iter=100)
+# best_gradient_params = random_search_gradient(X_train, y_train, n_iter=100)
 
 
 classifierGrad = GradientLinearClassifier()
@@ -333,18 +295,8 @@ y_pred_matrix = classifierMatrix.predict(X_test.values)
 accuracy_matrix = accuracy_score(y_test, y_pred_matrix)
 print(f"Точность Matrix Classifier на тесте: {accuracy_matrix:.2f}")
 
+#3
+plot_learning_curve(classifierGrad, classifierSVM, X_train, y_train)
 
-print("Построение кривой обучения для GradientLinearClassifier...")
-plot_learning_curve(classifierGrad, X_train, y_train)
-
-print("Построение кривой обучения для SVM...")
-plot_learning_curve(classifierSVM, X_train, y_train)
-
-print("Построение кривой ошибки на тестовом множестве для GradientLinearClassifier...")
-plot_test_error_curve(classifierGrad, X, y)
-
-print("Построение кривой ошибки на тестовом множестве для SVM...")
-plot_test_error_curve(classifierSVM, X, y)
-
-print("Построение кривой ошибки на тестовом множестве для MatrixLinearClassifier...")
-plot_test_error_curve_with_baseline(classifierMatrix, X, y)
+#4, 5
+plot_test_error_curve(classifierGrad, classifierSVM,classifierMatrix, X, y)
