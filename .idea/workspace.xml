@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ae73f646-6b37-42a5-8261-3605129d7a38" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Linear/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Linear/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,7 @@
     &quot;Python.ListChampions.executor&quot;: &quot;Debug&quot;,
     &quot;Python.asd.executor&quot;: &quot;Run&quot;,
     &quot;Python.check.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.pisa.executor&quot;: &quot;Run&quot;,
     &quot;Python.s.executor&quot;: &quot;Run&quot;,
     &quot;Python.siudfh.executor&quot;: &quot;Run&quot;,
@@ -54,7 +53,7 @@
     &quot;Python.tsv_to_csv.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/petro/PycharmProjects/ML/FS&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/MyData/ITMO/ML/5-fs-OCMINOJEK&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -135,6 +134,14 @@
       <workItem from="1734531180291" duration="6762000" />
       <workItem from="1734544426122" duration="661000" />
       <workItem from="1734610051063" duration="49000" />
+      <workItem from="1734627969640" duration="25830000" />
+      <workItem from="1736072488917" duration="2908000" />
+      <workItem from="1736082058606" duration="1045000" />
+      <workItem from="1736104722143" duration="2720000" />
+      <workItem from="1736255761716" duration="1614000" />
+      <workItem from="1736276531863" duration="1705000" />
+      <workItem from="1736506167262" duration="6607000" />
+      <workItem from="1736516691629" duration="3566000" />
     </task>
     <servers />
   </component>
@@ -143,18 +150,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FS/main.py</url>
-          <line>183</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/FS/main.py</url>
-          <line>213</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -185,7 +180,7 @@
     <SUITE FILE_PATH="coverage/ML$test.coverage" NAME="test Coverage Results" MODIFIED="1731485624759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Linear" />
     <SUITE FILE_PATH="coverage/ML$transformation.coverage" NAME="transformation Coverage Results" MODIFIED="1730203974160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
     <SUITE FILE_PATH="coverage/DataSetML$ListChampions.coverage" NAME="ListChampions Coverage Results" MODIFIED="1729001131142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet/processed data" />
-    <SUITE FILE_PATH="coverage/ML$main.coverage" NAME="main Coverage Results" MODIFIED="1734534639575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FS" />
+    <SUITE FILE_PATH="coverage/ML$main.coverage" NAME="main Coverage Results" MODIFIED="1734688200665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FS" />
     <SUITE FILE_PATH="coverage/ML$check.coverage" NAME="check Coverage Results" MODIFIED="1731415701102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataSet" />
   </component>
 </project>
